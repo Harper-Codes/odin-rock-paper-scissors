@@ -5,21 +5,24 @@ let computerScore = 0;
 
 const choices = ["Rock", "Paper", "Scissors"];
 
+// Gets AI selection //
 function getComputerChoice() {
     return choices[~~(Math.random() * choices.length)];
 }
 
+// gets player selection //
 function getPlayerChoice() {
     let playerInput = prompt("Your move: ").toLowerCase();
     return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
 }
 
-
+// displays scoreboard //
 function keepScore(playerScore, computerScore) {
     console.log(playerScore);
     console.log(computerScore);
 }
 
+// Plays a round & handles game logic //
 function playRound(playerSelection, computerSelection) {
     console.log(`You: ${playerSelection}`);
     console.log(`AI: ${computerSelection}`);
@@ -40,6 +43,7 @@ function playRound(playerSelection, computerSelection) {
     console.log("--------------------")
 }
 
+// loops game for 5 rounds and handles game ending score //
 function game() {
     for (i = 0; i < 5; i++) {
         computerSelection = getComputerChoice();
