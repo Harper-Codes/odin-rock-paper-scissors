@@ -1,6 +1,5 @@
 let computerSelection;
 let playerSelection;
-let check;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -13,7 +12,6 @@ function getComputerChoice() {
 function getPlayerChoice() {
     let playerInput = prompt("Your move: ").toLowerCase();
     return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
-    // console.log(playerInput);
 }
 
 
@@ -34,10 +32,7 @@ function playRound(playerSelection, computerSelection) {
         playerSelection === "Scissors" && computerSelection === "Paper" ){
         playerScore++;
         console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
-    } else if (
-        computerSelection === "Rock" && playerSelection === "Scissors" ||
-        computerSelection === "Paper" && playerSelection === "Rock" ||
-        computerSelection === "Scissors" && playerSelection === "Paper" ){
+    } else {
         computerScore++;
         console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
     }
