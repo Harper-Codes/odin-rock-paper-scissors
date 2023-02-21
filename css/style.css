@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(34, 32, 32);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header */
+.headerContainer {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 2px solid black;
+    background-color: rgb(46, 45, 54);
+    color: #fff;
+
+    
+}
+
+.spanOne {
+    color: rgb(218, 15, 191);
+}
+
+.spanTwo {
+    color: rgb(42, 189, 54);
+}
+
+.spanThree {
+    color: rgb(195, 240, 33);
+}
+
+/* Rules Container */
+.rulesContainer {
+    /* border: 2px red solid; */
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.rules {
+    color: #fff;
+    
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+ol {
+    text-decoration-line: underline overline;
+
+}
+
+/* Buttons Container */
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    padding: 100px 200px;
+}
+
+.hacker,
+.android,
+.punk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 70px;
+    height: 70px; */
+    text-align: center;
+    background: rgb(43, 43, 82);
+    /* padding: 10px; */
+}
+
+
+.hacker img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border: solid 5px rgb(41, 41, 40);
+    border-radius: 10px;
+    box-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(218, 15, 191),
+    0 0 82px rgb(218, 15, 191),
+    0 0 92px rgb(218, 15, 191),
+    0 0 92px rgb(218, 15, 191),
+    0 0 151px rgb(218, 15, 191);
+}
+
+
+.android img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border: solid 5px rgb(41, 41, 40);
+    border-radius: 10px;
+    box-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(42, 189, 54),
+    0 0 82px rgb(42, 189, 54),
+    0 0 92px rgb(42, 189, 54),
+    0 0 102px rgb(42, 189, 54),
+    0 0 151px rgb(42, 189, 54);
+}
+
+.punk img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border: solid 5px rgb(41, 41, 40);
+    border-radius: 10px;
+    box-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(195, 240, 33),
+    0 0 82px rgb(195, 240, 33),
+    0 0 92px rgb(195, 240, 33),
+    0 0 102px rgb(195, 240, 33),
+    0 0 151px rgb(195, 240, 33);
+}
+
+img:hover {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border: solid 5px rgb(41, 41, 40);
+    border-radius: 10px
+}
+
+/* Scoreboard */
+.scoreboardContainer {
+    /* border: 1px red solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreboard {
+    width: 700px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(41, 40, 40);
+    color: #66ffb3;
+}
+
+.playerData,
+.computerData {
+    text-align: center;
+}
+
+.playerData {
+    padding: 5px;
+    border-right: 3px solid black;
+}
+
+.computerData {
+    padding: 5px;
+    border-left: 3px solid black;
+}

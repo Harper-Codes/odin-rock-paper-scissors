@@ -3,18 +3,22 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-const choices = ["Rock", "Paper", "Scissors"];
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
 
 // Gets AI selection //
 function getComputerChoice() {
-    return choices[~~(Math.random() * choices.length)];
+    const choices = ["Rock", "Paper", "Scissors"];
+    aiChoice = choices[~~(Math.random() * choices.length)];
+    return aiChoice;
 }
 
 // gets player selection //
-function getPlayerChoice() {
-    let playerInput = prompt("Your move: ").toLowerCase();
-    return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
-}
+// function getPlayerChoice() {
+//     let playerInput = prompt("Your move: ").toLowerCase();
+//     return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
+// }
 
 // displays scoreboard //
 function keepScore(playerScore, computerScore) {
@@ -43,21 +47,33 @@ function playRound(playerSelection, computerSelection) {
     console.log("--------------------")
 }
 
+rockButton.addEventListener('click', () => {
+    playRound('Rock', getComputerChoice())
+})
+
+paperButton.addEventListener('click', () => {
+    playRound('Paper', getComputerChoice())
+})
+
+scissorsButton.addEventListener('click', () => {
+    playRound('Scissors', getComputerChoice())
+})
+
 // loops game for 5 rounds and handles game ending score //
 function game() {
-    for (i = 0; i < 5; i++) {
-        computerSelection = getComputerChoice();
-        playerSelection = getPlayerChoice();
-        playRound(playerSelection, computerSelection); 
-    }
-        console.log("~~~GAME OVER~~~")
-        if (playerScore === computerScore) {
-            console.log("TIE GAME")
-        } else if (playerScore > computerScore) {
-            console.log("YOU WIN")
-        } else if (playerScore < computerScore) {
-                console.log("YOU LOSE")
-        }
+    // for (i = 0; i < 5; i++) {
+    //     // computerSelection = getComputerChoice();
+    //     // playerSelection = getPlayerChoice();
+    //     playRound(playerSelection, computerSelection); 
+    // }
+    //     console.log("~~~GAME OVER~~~")
+    //     if (playerScore === computerScore) {
+    //         console.log("TIE GAME")
+    //     } else if (playerScore > computerScore) {
+    //         console.log("YOU WIN")
+    //     } else if (playerScore < computerScore) {
+    //             console.log("YOU LOSE")
+    //     }
 }
 
 game();
