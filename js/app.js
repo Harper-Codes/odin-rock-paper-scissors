@@ -1,79 +1,99 @@
+const hacker = document.querySelector('#hacker');
+const android = document.querySelector('#android');
+const punk = document.querySelector('#punk');
+const gameplayData = document.querySelector('.gameplayData')
+const gameResult = document.querySelector('.gameResult')
+const playerLives = document.querySelector('.playerLives')
+const aiLives = document.querySelector('.aiLives')
+const rounds = document.querySelector('.rounds')
+
+
+let playerHealth = 5
+let computerHealth = 5
+let round = 0
+let aiChoice;
 let computerSelection;
 let playerSelection;
-let playerScore = 0;
-let computerScore = 0;
-
-const rockButton = document.querySelector('#rock');
-const paperButton = document.querySelector('#paper');
-const scissorsButton = document.querySelector('#scissors');
 
 // Gets AI selection //
 function getComputerChoice() {
-    const choices = ["Rock", "Paper", "Scissors"];
+    const choices = ["Hacker", "Android", "Punk"];
     aiChoice = choices[~~(Math.random() * choices.length)];
     return aiChoice;
 }
 
-// gets player selection //
-// function getPlayerChoice() {
-//     let playerInput = prompt("Your move: ").toLowerCase();
-//     return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
-// }
+// Gets Player Selection based on which button is clicked
+hacker.addEventListener('click', () => {
+    playRound("Hacker", getComputerChoice())
+    gameplayData.innerHTML = `-You choose Hacker and AI chose ${aiChoice}`
+    
+})
 
-// displays scoreboard //
-function keepScore(playerScore, computerScore) {
-    console.log(playerScore);
-    console.log(computerScore);
+android.addEventListener('click', () => {
+    playRound("Android", getComputerChoice())
+    gameplayData.innerHTML = `-You choose Android and AI chose ${aiChoice}`
+})
+
+punk.addEventListener('click', () => {
+    playRound("Punk", getComputerChoice())
+    gameplayData.innerHTML = `-You choose Punk and AI chose ${aiChoice}`
+})
+
+// Displays Rounds Played
+function countRounds() {
+    round += 1
+    rounds.innerHTML = `Round: ${round}`;
+    return round;
+}
+
+// Displays Lives
+function countLives(){
+    playerLives.innerHTML = `${playerHealth}`
+    aiLives.innerHTML = `${computerHealth}`
+}
+
+// Handles end game logic
+function endGame() {
+    const endGameResult = document.querySelector(".endGameResult")
+    const gameOver = document.querySelector(".gameOver")
+    if (playerHealth === 0) {
+        endGameResult.innerHTML = "-You have lost your life."
+        gameOver.innerHTML = "-GAME OVER"
+    } else if (computerHealth === 0) {
+        endGameResult.innerHTML = "-The AI has been destroyed."
+        gameOver.innerHTML = "-GAME OVER"
+    }
+    
+}
+
+// Resets Game
+function rebootGame() {
+    const rebootGame = document.querySelector('.rebootGame');
+    rebootGame.addEventListener('click', () => {
+        window.location.reload();
+    });
 }
 
 // Plays a round & handles game logic //
 function playRound(playerSelection, computerSelection) {
-    console.log(`You: ${playerSelection}`);
-    console.log(`AI: ${computerSelection}`);
-    
+    // computerSelection == getComputerChoice()
     if (playerSelection === computerSelection) {
-        console.log("Tied Game!");
+        gameResult.innerHTML = '-The round is a tie'
     } else if (
-        playerSelection === "Rock" && computerSelection === "Scissors" ||
-        playerSelection === "Paper" && computerSelection === "Rock" ||
-        playerSelection === "Scissors" && computerSelection === "Paper" ){
-        playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        playerSelection === "Hacker" && computerSelection === "Android" ||
+        playerSelection === "Android" && computerSelection === "Punk" ||
+        playerSelection === "Punk" && computerSelection === "Hacker") {
+        gameResult.innerHTML = '-The AI lost a life'
+        computerHealth -= 1;
+        // lives.innerHTML = `${computerHealth}`    
     } else {
-        computerScore++;
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+        gameResult.innerHTML = '-You lost a life'
+        playerHealth -= 1;
+        // lives.innerHTML = `${playerHealth}`
     }
-    keepScore(playerScore, computerScore);
-    console.log("--------------------")
+    countRounds();  
+    countLives();
+    endGame();
+    rebootGame();
 }
 
-rockButton.addEventListener('click', () => {
-    playRound('Rock', getComputerChoice())
-})
-
-paperButton.addEventListener('click', () => {
-    playRound('Paper', getComputerChoice())
-})
-
-scissorsButton.addEventListener('click', () => {
-    playRound('Scissors', getComputerChoice())
-})
-
-// loops game for 5 rounds and handles game ending score //
-function game() {
-    // for (i = 0; i < 5; i++) {
-    //     // computerSelection = getComputerChoice();
-    //     // playerSelection = getPlayerChoice();
-    //     playRound(playerSelection, computerSelection); 
-    // }
-    //     console.log("~~~GAME OVER~~~")
-    //     if (playerScore === computerScore) {
-    //         console.log("TIE GAME")
-    //     } else if (playerScore > computerScore) {
-    //         console.log("YOU WIN")
-    //     } else if (playerScore < computerScore) {
-    //             console.log("YOU LOSE")
-    //     }
-}
-
-game();
