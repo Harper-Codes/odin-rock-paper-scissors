@@ -25,18 +25,18 @@ function getComputerChoice() {
 // Gets Player Selection based on which button is clicked
 hacker.addEventListener('click', () => {
     playRound("Hacker", getComputerChoice())
-    gameplayData.innerHTML = `-You choose Hacker and AI chose ${aiChoice}`
+    gameplayData.innerHTML = `-You chose Hacker and the AI chose ${aiChoice}`
     
 })
 
 android.addEventListener('click', () => {
     playRound("Android", getComputerChoice())
-    gameplayData.innerHTML = `-You choose Android and AI chose ${aiChoice}`
+    gameplayData.innerHTML = `-You chose Android and the AI chose ${aiChoice}`
 })
 
 punk.addEventListener('click', () => {
     playRound("Punk", getComputerChoice())
-    gameplayData.innerHTML = `-You choose Punk and AI chose ${aiChoice}`
+    gameplayData.innerHTML = `-You chose Punk and the AI chose ${aiChoice}`
 })
 
 // Displays Rounds Played
@@ -59,11 +59,11 @@ function endGame() {
     if (playerHealth === 0) {
         endGameResult.innerHTML = "-You have lost your life."
         gameOver.innerHTML = "-GAME OVER"
+        disableGame();
     } else if (computerHealth === 0) {
         endGameResult.innerHTML = "-The AI has been destroyed."
         gameOver.innerHTML = "-GAME OVER"
     }
-    
 }
 
 // Resets Game
